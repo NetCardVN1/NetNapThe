@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nạp Thẻ Dịch Vụ - Phiên Bản Tùy Chỉnh</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #e8f5e8; margin: 0; padding: 0; color: #333; }
+        header { background-color: #28a745; color: white; padding: 30px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .container { max-width: 900px; margin: 20px auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.1); }
+        .promo { background-color: #fff3cd; padding: 15px; margin-bottom: 20px; border-radius: 5px; border-left: 5px solid #ffc107; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; color: #28a745; }
+        select, input { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; }
+        button { background-color: #dc3545; color: white; padding: 12px 25px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; width: 100%; margin-top: 10px; }
+        button:hover { background-color: #c82333; }
+        .result { margin-top: 20px; padding: 15px; background-color: #d4edda; border-radius: 5px; display: none; border-left: 5px solid #28a745; }
+        footer { text-align: center; padding: 20px; background-color: #f8f9fa; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Nạp Thẻ Dịch Vụ & Game</h1>
+        <p>Nạp nhanh, an toàn với nhiều lựa chọn nhà mạng và mệnh giá.</p>
+    </header>
+    
+    <div class="container">
+        <div class="promo">
+            <h3>Khuyến Mãi Đặc Biệt!</h3>
+            <p>Nạp thẻ từ 100k trở lên nhận thêm 5% giá trị. Áp dụng cho tất cả nhà mạng!</p>
+        </div>
+        
+        <form id="napthe-form">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="nha-mang">Nhà Mạng:</label>
+                    <select id="nha-mang">
+                        <option value="">Chọn nhà mạng</option>
+                        <option value="viettel">Viettel</option>
+                        <option value="mobifone">Mobifone</option>
+                        <option value="vinaphone">Vinaphone</option>
+                        <option value="vietnamobile">Vietnamobile</option>
+                        <option value="garena">Garena</option>
+                        <option value="zing">Zing</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="menh-gia">Mệnh Giá:</label>
+                    <select id="menh-gia">
+                        <option value="">Chọn mệnh giá</option>
+                        <option value="10000">10.000 VND</option>
+                        <option value="20000">20.000 VND</option>
+                        <option value="50000">50.000 VND</option>
+                        <option value="100000">100.000 VND</option>
+                        <option value="200000">200.000 VND</option>
+                        <option value="500000">500.000 VND</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="ma-the">Mã Thẻ:</label>
+                    <input type="text" id="ma-the" placeholder="Ví dụ: 1234567890123456">
+                </div>
+                
+                <div class="form-group">
+                    <label for="serial">Số Serial:</label>
+                    <input type="text" id="serial" placeholder="Ví dụ: ABC123456789">
+                </div>
+            </div>
+            
+            <button type="button" onclick="xuLyNapThe()">Xác Nhận Nạp Thẻ</button>
+        </form>
+        
+        <div id="result" class="result">
+            <h3>Thông Báo Kết Quả:</h3>
+            <p id="result-text"></p>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2023 Nạp Thẻ Dịch Vụ. Tất cả quyền được bảo lưu. Liên hệ hỗ trợ: support@example.com</p>
+    </footer>
+    
+    <script>
+        function xuLyNapThe() {
+            const nhaMang = document.getElementById('nha-mang').value;
+            const menhGia = document.getElementById('menh-gia').value;
+            const maThe = document.getElementById('ma-the').value;
+            const serial = document.getElementById('serial').value;
+            
+            if (!nhaMang || !menhGia || !maThe || !serial) {
+                alert('Hãy điền đầy đủ thông tin trước khi nạp!');
+                return;
+            }
+            
+            // Giả lập xử lý (thực tế cần backend để xác thực và nạp)
+            let khuyenMai = parseInt(menhGia) >= 100000 ? ' (Đã áp dụng khuyến mãi +5%)' : '';
+            document.getElementById('result-text').innerText = `Nạp thành công thẻ ${nhaMang} mệnh giá ${menhGia} VND. Mã thẻ: ${maThe}, Serial: ${serial}.${khuyenMai} (Đây là mô phỏng - không thực sự nạp!)`;
+            document.getElementById('result').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
